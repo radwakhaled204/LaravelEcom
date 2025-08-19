@@ -22,12 +22,18 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
+    protected function mapAdminRoutes()
+{
+    Route::middleware('web')
+        ->group(base_path('routes/admin-auth.php'));
+}
+
     public function boot(): void
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
-
+        $this->mapAdminRoutes();
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
