@@ -10,7 +10,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('dashboard', function () {
-            // 👇 خلي الصفحة من برا فولدر admin
+          
             return view('dashboard');  
         })->name('dashboard');
     });
