@@ -234,42 +234,6 @@
         </div>
       </div>
 
-      <div class="isotope-container row">
-        @foreach ($products as $product)
-        <div class="item cat col-md-4 col-lg-3 my-4">
-          <!-- <div class="z-1 position-absolute rounded-3 m-3 px-3 border border-dark-subtle">
-            New
-          </div> -->
-          <div class="card position-relative">
-            <a href="{{ route('products.show', $product->id) }}"><img src="{{ asset('upload/products/' . $product->images->first()->image_name) }}" alt="{{ $product->name }}" class="img-fluid rounded-4" alt="image"></a>
-            <div class="card-body p-0">
-              <a href="{{ route('products.show', $product->id) }}">
-                <h3 class="card-title pt-4 m-0">{{ $product->name }}</h3>
-              </a>
-              <div class="card-text">
-                <h3 class="secondary-font text-primary">${{ number_format($product->price, 2) }}</h3>
-                <div class="d-flex flex-wrap mt-3">
-                @if(Auth::check())
-                <form action="{{ route('cart-items.store') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <input type="number" name="quantity_to_purchase" value="1" min="1" required>
-                    <button type="submit" class="btn-cart me-3 px-4 pt-3 pb-3"><h5 class="text-uppercase m-0">Add to Cart</h5></button>
-                </form>
-                @else
-                  <a href="{{ route('login') }}" class="btn-cart me-3 px-4 pt-3 pb-3">
-                    <h5 class="text-uppercase m-0">Add to Cart</h5>
-                  </a>
-                @endif
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
 
 
     </div>
